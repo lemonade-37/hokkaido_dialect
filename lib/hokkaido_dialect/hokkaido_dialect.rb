@@ -22,6 +22,11 @@ module HokkaidoDialect
       print "番号を入力してください（1 or 2）: "
       input = $stdin.gets.to_i
 
+      unless [1, 2].include?(input)
+        puts "無効な入力です！1または2を入力してください🐻"
+        return
+      end
+
       if correct_answer?(input)
         puts "正解！🎉✨🦀"
       else
