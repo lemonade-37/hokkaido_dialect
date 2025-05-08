@@ -5,7 +5,8 @@ RSpec.describe HokkaidoDialect do
     expect(HokkaidoDialect::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  it "can ask a question" do
+    question = HokkaidoDialect::Question.new
+    expect(question.ask).to include("次の文章で正しい北海道弁はどっち？")
   end
 end
