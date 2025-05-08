@@ -1,5 +1,5 @@
 module HokkaidoDialect
-  DIALECTS = [
+  QUESTIONS = [
     { dialect: "べ", correct_usage: "うまいべ？", wrong_usage: "椅子に座るんだべ" },
     { dialect: "べさ", correct_usage: "大丈夫だべさ", wrong_usage: "バイバイだべさ" },
     { dialect: "べや", correct_usage: "お前、ちゃんと連絡しろって言ったべや", wrong_usage: "あの人かっこいいべや" },
@@ -11,9 +11,9 @@ module HokkaidoDialect
 
   class Question
     def initialize
-      dialect = DIALECTS.sample
-      @correct = dialect[:correct_usage]
-      @incorrect = dialect[:wrong_usage]
+      question = QUESTIONS.sample
+      @correct = question[:correct_usage]
+      @incorrect = question[:wrong_usage]
       @choices = [@correct, @incorrect].shuffle
     end
 
