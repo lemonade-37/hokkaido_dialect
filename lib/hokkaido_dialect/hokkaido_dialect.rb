@@ -10,17 +10,32 @@ module HokkaidoDialect
   ]
 
   class Question
-    def self.ask
+    def initialize
       dialect = DIALECTS.sample
-      correct_usage = dialect[:correct_usage]
-      incorrect_usage = dialect[:wrong_usage]
+      @correct = dialect[:correct_usage]
+      @incorrect = dialect[:wrong_usage]
+      @choices = [@correct, @incorrect].shuffle
+    end
 
-      choices = [correct_usage, incorrect_usage].shuffle
+    def ask
+      "次の文章で正しい北海道弁はどっち？\n1. #{@choices[0]}\n2. #{@choices[1]}"
+    end
 
-      {
-        question: "次の文章で正しい北海道弁はどっち？\n1. #{choices[0]}\n2. #{choices[1]}",
-        answer: choices.index(correct_usage) + 1
-      }
+    def correct_answer?(choice)
+      choice.to_i == @choices.index(@correct) + 1
+    end
+
+    def self.ask_and_check
+      q = new
+      puts q.ask
+      print "番号を入力してください（1 or 2）: "
+      input = $stdin.gets.to_i
+
+      if q.correct_answer?(input)
+        puts "正解！🎉✨🦀"
+      else
+        puts "不正解…🐄"
+      end
     end
   end
 end
