@@ -30,6 +30,7 @@ module HokkaidoDialect
     def initialize
       question = QUESTIONS.sample
       wrong_usage = question[:wrong_usage]
+      @dialect = question[:dialect]
       @correct_usage = question[:correct_usage]
       @choices = [wrong_usage, @correct_usage].shuffle
     end
@@ -52,7 +53,7 @@ module HokkaidoDialect
     end
 
     def ask
-      "次の文章で正しい北海道弁はどっち？\n1. #{@choices[0]}\n2. #{@choices[1]}"
+      "次の文章で正しい「#{@dialect}」の使い方はどっち？\n1. #{@choices[0]}\n2. #{@choices[1]}"
     end
 
     def correct_answer?(input)
