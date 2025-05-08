@@ -12,9 +12,9 @@ module HokkaidoDialect
   class QuizGame
     def initialize
       question = QUESTIONS.sample
-      @correct = question[:correct_usage]
-      @incorrect = question[:wrong_usage]
-      @choices = [@correct, @incorrect].shuffle
+      @correct_usage = question[:correct_usage]
+      @wrong_usage = question[:wrong_usage]
+      @choices = [@correct_usage, @wrong_usage].shuffle
     end
 
     def ask_and_check
@@ -34,7 +34,7 @@ module HokkaidoDialect
     end
 
     def correct_answer?(choice)
-      choice.to_i == @choices.index(@correct) + 1
+      choice.to_i == @choices.index(@correct_usage) + 1
     end
   end
 end
