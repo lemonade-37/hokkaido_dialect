@@ -13,8 +13,8 @@ module HokkaidoDialect
     def initialize
       question = QUESTIONS.sample
       @correct_usage = question[:correct_usage]
-      @wrong_usage = question[:wrong_usage]
-      @choices = [@correct_usage, @wrong_usage].shuffle
+      wrong_usage = question[:wrong_usage]
+      @choices = [@correct_usage, wrong_usage].shuffle
     end
 
     def ask_and_check
