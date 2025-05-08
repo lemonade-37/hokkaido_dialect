@@ -17,13 +17,12 @@ module HokkaidoDialect
       @choices = [@correct, @incorrect].shuffle
     end
 
-    def self.ask_and_check
-      q = new
-      puts q.ask
+    def ask_and_check
+      puts ask
       print "番号を入力してください（1 or 2）: "
       input = $stdin.gets.to_i
 
-      if q.correct_answer?(input)
+      if correct_answer?(input)
         puts "正解！🎉✨🦀"
       else
         puts "不正解…🐄"
