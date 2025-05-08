@@ -9,7 +9,7 @@ module HokkaidoDialect
     { dialect: "したっけ", correct_usage: "こないだ雪かきしたっけ、筋肉痛になったさ", wrong_usage: "電気消したっけ" },
   ]
 
-  class Question
+  class QuizGame
     def initialize
       question = QUESTIONS.sample
       @correct = question[:correct_usage]
