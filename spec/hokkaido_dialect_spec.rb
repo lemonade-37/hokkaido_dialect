@@ -6,7 +6,7 @@ RSpec.describe HokkaidoDialect do
   end
 
   it "can ask a question" do
-    question = HokkaidoDialect::Question.new
+    question = HokkaidoDialect::QuizGame.new
     expect(question.ask).to include("次の文章で正しい北海道弁はどっち？")
   end
 end
