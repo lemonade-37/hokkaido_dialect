@@ -33,8 +33,9 @@ module HokkaidoDialect
       "次の文章で正しい北海道弁はどっち？\n1. #{@choices[0]}\n2. #{@choices[1]}"
     end
 
-    def correct_answer?(choice)
-      choice.to_i == @choices.index(@correct_usage) + 1
+    def correct_answer?(input)
+      index = input - 1
+      @choices[index] == @correct_usage
     end
   end
 end
