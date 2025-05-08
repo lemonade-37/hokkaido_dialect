@@ -17,14 +17,6 @@ module HokkaidoDialect
       @choices = [@correct, @incorrect].shuffle
     end
 
-    def ask
-      "次の文章で正しい北海道弁はどっち？\n1. #{@choices[0]}\n2. #{@choices[1]}"
-    end
-
-    def correct_answer?(choice)
-      choice.to_i == @choices.index(@correct) + 1
-    end
-
     def self.ask_and_check
       q = new
       puts q.ask
@@ -36,6 +28,14 @@ module HokkaidoDialect
       else
         puts "不正解…🐄"
       end
+    end
+
+    def ask
+      "次の文章で正しい北海道弁はどっち？\n1. #{@choices[0]}\n2. #{@choices[1]}"
+    end
+
+    def correct_answer?(choice)
+      choice.to_i == @choices.index(@correct) + 1
     end
   end
 end
