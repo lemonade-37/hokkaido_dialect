@@ -27,8 +27,15 @@ module HokkaidoDialect
   ]
 
   class QuizGame
-    def initialize
-      question = QUESTIONS.sample
+    def self.all
+      questions = QUESTIONS.shuffle
+      result = questions.map do |question|
+        new(question).ask_and_check
+      end
+      puts "#{questions.size}問中#{result.count(true)}問正解！"
+    end
+
+    def initialize(question = QUESTIONS.sample)
       wrong_usage = question[:wrong_usage]
       @dialect = question[:dialect]
       @correct_usage = question[:correct_usage]
@@ -47,8 +54,10 @@ module HokkaidoDialect
 
       if correct_answer?(input)
         puts '正解！🎉✨🦀'
+        true
       else
         puts '不正解…🐄'
+        false
       end
     end
 
