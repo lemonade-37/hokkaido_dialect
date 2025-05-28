@@ -43,26 +43,30 @@ module HokkaidoDialect
     end
 
     def ask_and_check
-      puts ask
-      print '番号を入力してください（1 or 2）: '
-      input = $stdin.gets.to_i
+      puts question_body
 
-      unless [1, 2].include?(input)
-        puts '無効な入力です！1または2を入力してください🐻'
-        return
-      end
+      input = input_until_valid
 
-      if correct_answer?(input)
-        puts '正解！🎉✨🦀'
-        true
-      else
-        puts '不正解…🐄'
-        false
+      correct_answer?(input).tap do |judgment|
+        puts judgment ? '正解！🎉✨🦀' : '不正解…🐄'
       end
     end
 
-    def ask
+    def question_body
       "次の文章で正しい「#{@dialect}」の使い方はどっち？\n1. #{@choices[0]}\n2. #{@choices[1]}"
+    end
+
+    def input_until_valid
+      loop do
+        print '番号を入力してください（1 or 2）: '
+        input = $stdin.gets.to_i
+
+        if [1, 2].include?(input)
+          return input
+        end
+
+        puts '無効な入力です！1または2を入力してください🐻'
+      end
     end
 
     def correct_answer?(input)
