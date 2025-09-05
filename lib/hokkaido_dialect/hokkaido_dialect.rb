@@ -27,12 +27,19 @@ module HokkaidoDialect
   ]
 
   class QuizGame
+    def self.play(number_of_questions = 3)
+      play_questions(QUESTIONS.sample(number_of_questions))
+    end
+
     def self.all
-      questions = QUESTIONS.shuffle
-      result = questions.map do |question|
+      play_questions(QUESTIONS.shuffle)
+    end
+
+    def self.play_questions(questions)
+      results = questions.map do |question|
         new(question).ask_and_check
       end
-      puts "#{questions.size}問中#{result.count(true)}問正解！"
+      puts "#{questions.size}問中#{results.count(true)}問正解！"
     end
 
     def initialize(question = QUESTIONS.sample)

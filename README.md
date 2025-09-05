@@ -24,13 +24,24 @@ Start an interactive quiz in IRB:
 % irb
 irb(main):001> require 'hokkaido_dialect'
 => true
-irb(main):002> HokkaidoDialect::QuizGame.new.ask_and_check
-=> 🦀🐻🐄💫✨
+irb(main):002> HokkaidoDialect::QuizGame.play
 ```
 
-There will be multiple-choice questions on the correct usage of the Hokkaido dialect.
+### Play a quiz
 
-Enjoy the quiz and become familiar with the Hokkaido dialect!
+```ruby
+# 3 random questions (default)
+HokkaidoDialect::QuizGame.play
+
+# Specify the number of questions
+HokkaidoDialect::QuizGame.play(5)
+
+# Play with all questions
+HokkaidoDialect::QuizGame.all
+```
+
+You will be asked multiple-choice questions on the correct usage of the Hokkaido dialect.
+Enjoy the quiz and become familiar with the Hokkaido dialect! 🦀🐻🐄✨
 
 ## Development
 
